@@ -1,0 +1,20 @@
+name: TesseractTeams
+main: com.martinbrook.TesseractTeams.TesseractTeams
+version: 0.1
+description: A simple teams plugin
+commands:
+ reloadteams:
+  description: Reload teams configuration
+  usage: /reloadteams
+ join:
+  description: Join a random team
+  usage: /reloadteams
+ leave:
+  description: Leave your team
+  usage: /reloadteams
+ teams:
+  description: List all teams
+  usage: /reloadteams
+ t:
+  description: Send a message to your teammates
+  usage: /t [message]

@@ -1,0 +1,12 @@
+team1:
+ name: Team One
+ color: red
+ players:
+  - player1
+  - player2
+team2:
+ name: Team Two
+ color: blue
+ players:
+  - player3
+  - player4
