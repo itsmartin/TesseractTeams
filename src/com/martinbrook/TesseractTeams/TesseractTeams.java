@@ -97,12 +97,15 @@ public class TesseractTeams extends JavaPlugin {
     	TTeam t = assignTeam(p);
     	if (t == null) return ChatColor.RED + "You are already on a team. Leave it first with /leave";
     	getServer().broadcastMessage(ChatColor.YELLOW + p.getDisplayName() + " has joined " + t.getColor() + t.getName());
-    	return ChatColor.AQUA + "Welcome to " + t.getColor() + t.getName() + ChatColor.AQUA + "!";
+    	return ChatColor.AQUA + "Welcome to " + t.getColor() + t.getName() + ChatColor.AQUA + "!\n"
+    			+ ChatColor.GREEN + "You can send private messages to your teammates using the "
+    			+ ChatColor.GOLD + "/t" + ChatColor.GREEN + " command.";
     }
     
     private String cLeave(Player p) {
     	TTeam t = removeTeam(p);
     	if (t != null) {
+    		getServer().broadcastMessage(ChatColor.YELLOW + p.getDisplayName() + " has left " + t.getColor() + t.getName());
     		return ChatColor.AQUA + "You are no longer a member of any team.";
     	} else {
     		return ChatColor.RED + "Unable to leave. You are not on a team.";
@@ -203,6 +206,8 @@ public class TesseractTeams extends JavaPlugin {
 			String pln = t.getColor() + player.getName();
 			if (pln.length() > 16) pln= pln.substring(0,16);
 			player.setPlayerListName(pln);
+		} else {
+			player.setDisplayName(player.getName());
 		}
 	}
 
