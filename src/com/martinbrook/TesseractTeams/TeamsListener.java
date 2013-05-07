@@ -26,7 +26,12 @@ public class TeamsListener implements Listener {
 	
 	@EventHandler
 	public void onJoin(PlayerJoinEvent e) {
-		plugin.setDisplayName(e.getPlayer());
+		TTeam t = plugin.getTeam(e.getPlayer());
+		if (t == null) {
+			e.getPlayer().sendMessage(ChatColor.AQUA + "Welcome to the server! Please join a team by typing " + ChatColor.GOLD + "/join");
+		} else {
+			plugin.setDisplayName(e.getPlayer());
+		}
 	}
 
 	
