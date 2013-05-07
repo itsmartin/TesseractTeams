@@ -96,10 +96,10 @@ public class TesseractTeams extends JavaPlugin {
     private String cJoin(Player p) {
     	TTeam t = assignTeam(p);
     	if (t == null) return ChatColor.RED + "You are already on a team. Leave it first with /leave";
-    	getServer().broadcastMessage(ChatColor.YELLOW + p.getDisplayName() + " has joined " + t.getColor() + t.getName());
+    	getServer().broadcastMessage(ChatColor.YELLOW + p.getDisplayName() + ChatColor.YELLOW + " has joined " + t.getColor() + t.getName());
     	return ChatColor.AQUA + "Welcome to " + t.getColor() + t.getName() + ChatColor.AQUA + "!\n"
-    			+ ChatColor.GREEN + "You can send private messages to your teammates using the "
-    			+ ChatColor.GOLD + "/t" + ChatColor.GREEN + " command.";
+    			+ ChatColor.AQUA + "You can send private messages to your teammates using the "
+    			+ ChatColor.GOLD + "/t" + ChatColor.AQUA + " command.";
     }
     
     private String cLeave(Player p) {
@@ -203,12 +203,16 @@ public class TesseractTeams extends JavaPlugin {
 		TTeam t = getTeam(player);
 		if (t!=null) {
 			player.setDisplayName(t.getColor() + player.getName());
-			String pln = t.getColor() + player.getName();
-			if (pln.length() > 16) pln= pln.substring(0,16);
-			player.setPlayerListName(pln);
 		} else {
 			player.setDisplayName(player.getName());
 		}
+		updatePlayerListName(player);
+	}
+	
+	private void updatePlayerListName(Player player) {
+		String pln = player.getDisplayName();
+		if (pln.length() > 16) pln= pln.substring(0,16);
+		player.setPlayerListName(pln);
 	}
 
 }
